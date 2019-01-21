@@ -13,12 +13,14 @@ async function getStacks(){
             // console.log($('p.css-1echdzn.e1xfvim31').text())
             // console.log($('div.css-4jyr1y').children('a').attr('href'))
             $('div.css-4jyr1y').each((i, elem)=> {
-                data.push({
+                let stack = {}
+                stack = {
                     title: $(elem).children('a').children('h2.css-1dq8tca.e1xfvim30').text(),
                     summary: $(elem).children('a').children('p.css-1echdzn.e1xfvim31').text(),
                     url: $(elem).children('a').attr('href'),
                     isSaved:false
-                    })          
+                }  
+                    data.push(stack)
             })
             resolve(data)
     })  
@@ -38,8 +40,8 @@ module.exports = app =>{
         .catch(e=>console.error(e))
     })
 
-    app.put('./stacks/:id',(req,res) => {
-        Stack.findByIdAndUpdate(res.params.id,{isSaved:false})
+    app.put('/stack/:id',(req,res) => {
+        Stack.findByIdAndUpdate(req.params.id,{isSaved:true})
         .then(r=>res.sendStatus(200))
         .catch(r=>res.sendStatus(404))
     })
@@ -63,5 +65,11 @@ module.exports = app =>{
         })
         .catch(e=>res.send(e))
         
+    })
+
+    app.delete('/stack/:id',(req, res)=>{
+        Stack.findByIdAndDelete(req.params.id)
+        .then(r=>res.sendStatus(200))
+        .catch(r=>res.sendStatus(404))
     })
 }

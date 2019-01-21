@@ -14,11 +14,11 @@ const Home = props =>
 
 <body>
 <nav className="collapse navbar-collapse navbar navbar-expand-lg navbar-dark bg-primary">
-    <a className="navbar-brand" href="/">Mongo Scraper</a>
-    <a className="navbar-brand" href="/">Home</a>
-    <a className="navbar-brand" href="/">SaveTitle</a>
-      <a href="/all"><button className="btn btn-danger btn-lg"><span className="fa fa-plus"></span>Scrap New Title</button></a>
-      <a href="/add"><button className="btn btn-danger btn-lg"><span className="fa fa-times"></span>Clear Aticle</button></a>
+    <a id = "gotoHome" className="navbar-brand" href="/">Mongo Scraper</a>
+    <a id = "gotoHome"className="navbar-brand" href="/">Home</a>
+    <a id = "gotoSaved" className="navbar-brand" href="#">SaveTitle</a>
+      <a href="#"><button id = "scrapeData" className="btn btn-danger btn-lg"><span className="fa fa-plus"></span>Scrap New Title</button></a>
+      <a href="#"><button className="btn btn-danger btn-lg"><span className="fa fa-times"></span>Clear Aticle</button></a>
 </nav>
 <div className="jumbotron text-center">
   <div className="overlay">
@@ -34,6 +34,14 @@ const Home = props =>
  
   <div className='alert alert-warning text-center'>
     <h4>Uh Oh. Looks like we don't have any new articles.</h4>
+    {
+      props.stacks.map(stack => <div>
+        <a id = 'link' data-url={`https://www.nytimes.com${stack.url}`} href ='#'>{stack.title}</a>
+        <p> {stack.summary} </p>
+        <button id = 'saveBTN' data-id ={stack._id}>Save</button>
+        {/* <button id = "deleteBTN" data-id ={stack._id}>Delete</button> */}
+        </div>)
+    }
   </div>
   <div className="card">
     <div className="card-header text-center">

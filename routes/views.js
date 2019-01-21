@@ -15,7 +15,6 @@ module.exports = app =>{
         Stack.find({isSaved:true})
         .then(r=>res.render('Saved',{stacks: r}))
         .catch(e=>console.error(e)) 
-        res.render('Saved')
     })
     
     app.get('/stacks',(req,res)=>{
@@ -24,9 +23,4 @@ module.exports = app =>{
         .catch(e=>console.error(e))
     })
 
-    app.get('/saved',(req,res)=>{
-        Stack.find({isSaved:true})
-        .then(r=>res.json(r))
-        .catch(e=>console.error(e))
-    })
 }
