@@ -41,6 +41,12 @@ module.exports = app =>{
         .catch(r=>res.sendStatus(404))
     })
 
+    app.put('/note/:id',(req,res) => {
+        Stack.findByIdAndUpdate(req.params.id,{comment: req.params.note})
+        .then(r=>res.sendStatus(200))
+        .catch(r=>res.sendStatus(404))
+    })
+
       app.post('/srape',(req,res) =>{
         getStacks()
         .then(r=>{

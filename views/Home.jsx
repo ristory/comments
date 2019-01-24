@@ -42,6 +42,7 @@ const Home = props =>
         <textarea className="form-control" id="note" data-id ={stack._id} rows="2"></textarea>
         </div>
         <button id = 'saveBTN' data-id ={stack._id}>Save</button>
+        <button id = 'noteBTN' data-id ={stack._id}>Add Note</button>
         <hr/>
         {/* <button id = "deleteBTN" data-id ={stack._id}>Delete</button> */}
         </div>)

@@ -17,7 +17,6 @@ const Saved = props =>
     <a id = "gotoHome" className="navbar-brand" href="/">Mongo Scraper</a>
     <a id = "gotoHome"className="navbar-brand" href="/">Home</a>
     <a id = "gotoSaved" className="navbar-brand" href="#">SaveTitle</a>
-      <a href="#"><button id = "scrapeData" className="btn btn-danger btn-lg"><span className="fa fa-plus"></span>Scrap New Title</button></a>
 </nav>
 <div className="jumbotron text-center">
   <div className="overlay">
@@ -34,7 +33,7 @@ const Saved = props =>
   <div className='alert alert-warning text-center'>
     {
       props.stacks.map(stack => <div>
-        <a id = 'link' href = {`https://www.nytimes.com${stack.url}`}>{stack.title} </a>
+        <a id = 'link' data-url={`https://www.nytimes.com${stack.url}`} href ='#'>{stack.title}</a>
         <p> {stack.summary} </p>
         <div className="form-group">
         <label>Note:</label>

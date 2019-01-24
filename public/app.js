@@ -22,6 +22,17 @@ const saveStack = id => {
     })
 }
 
+const saveNote = (note,id) => {
+    fetch(`/note/${id}`,{
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json; charset=utf-8'
+        }
+    }).then( r=>{
+        window.location.reload()
+    })
+}
+
 const deleteStack = id => {
     fetch(`/stack/${id}`,{
         method: 'Delete',
@@ -57,6 +68,11 @@ document.addEventListener('click',event =>{
         break
         case 'saveBTN':
         saveStack(event.target.dataset.id)
+        break
+        case 'noteBTN':
+        var note = $("#note").val();
+        console.log(note)
+        saveNote(note,event.target.dataset.id)
         break
         case 'deleteBTN':
         deleteStack(event.target.dataset.id)
