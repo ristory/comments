@@ -15,7 +15,9 @@ app.set("view engine", "jsx");
 app.engine("jsx",require("express-react-views").createEngine());
 
 // Connect to the Mongo DB
-mongoose.connect("mongodb://localhost/NYcomments", { useNewUrlParser: true });
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/NYcomments";
+mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
+
 // A GET route for scraping the echoJS website
 //app.set(require('./routes/databases')(app))
 app.set(require('./routes')(app))

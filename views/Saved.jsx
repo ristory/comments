@@ -36,8 +36,7 @@ const Saved = props =>
         <a id = 'link' data-url={`https://www.nytimes.com${stack.url}`} href ='#'>{stack.title}</a>
         <p> {stack.summary} </p>
         <div className="form-group">
-        <label>Note:</label>
-        <textarea className="form-control" id="note" data-id ={stack._id} rows="2"></textarea>
+        <label>Note: {stack.comment}</label>
         </div>
         <button id = "deleteBTN" data-id ={stack._id}>Delete</button>
         </div>)
