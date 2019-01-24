@@ -18,6 +18,7 @@ async function getStacks(){
                     title: $(elem).children('a').children('h2.css-1dq8tca.e1xfvim30').text(),
                     summary: $(elem).children('a').children('p.css-1echdzn.e1xfvim31').text(),
                     url: $(elem).children('a').attr('href'),
+                    comment: "",
                     isSaved:false
                 }  
                     data.push(stack)
@@ -34,25 +35,11 @@ module.exports = app =>{
         .catch(e=>console.error(e))
     })
 
-    app.get('./saves',(req,res) => {
-        Stack.find({isSaved:true})
-        .then(r=>res.json(r))
-        .catch(e=>console.error(e))
-    })
-
     app.put('/stack/:id',(req,res) => {
         Stack.findByIdAndUpdate(req.params.id,{isSaved:true})
         .then(r=>res.sendStatus(200))
         .catch(r=>res.sendStatus(404))
     })
-    // app.post('/stacks',(req,res) =>{
-    //     require('../models').Stack.create({
-    //         title: "Hotdog",
-    //         summary: "Hotdog",
-    //         url: "Hotdog"
-    //     })
-    //     .then( r => console.log('done')) 
-    // })
 
       app.post('/srape',(req,res) =>{
         getStacks()
@@ -66,9 +53,16 @@ module.exports = app =>{
         .catch(e=>res.send(e))
         
     })
+    
 
     app.delete('/stack/:id',(req, res)=>{
         Stack.findByIdAndDelete(req.params.id)
+        .then(r=>res.sendStatus(200))
+        .catch(r=>res.sendStatus(404))
+    })
+
+    app.delete('/alldelete',(req, res)=>{
+        Stack.deleteMany()
         .then(r=>res.sendStatus(200))
         .catch(r=>res.sendStatus(404))
     })

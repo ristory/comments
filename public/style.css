@@ -6,6 +6,10 @@ html {
   body {
     margin-bottom: 80px;
   }
+
+  hr {
+    color: red;
+  }
   
   .card a:not([href]):not([tabindex]).scrape-new {
     color: #2196F3;

@@ -33,6 +33,17 @@ const deleteStack = id => {
     })
 }
 
+const deleteallStack = () => {
+    fetch(`/alldelete`,{
+        method: 'Delete',
+        headers: {
+            'Content-Type': 'application/json; charset=utf-8'
+        }
+    }).then(_=>{
+        window.location.reload()
+    })
+}
+
 document.addEventListener('click',event =>{
     event.preventDefault()
     console.log (event.target.id)
@@ -49,6 +60,9 @@ document.addEventListener('click',event =>{
         break
         case 'deleteBTN':
         deleteStack(event.target.dataset.id)
+        break
+        case 'deleteallBTN':
+        deleteallStack()
         break
         case 'gotoSaved':
         window.location = './saved'

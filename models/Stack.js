@@ -4,6 +4,7 @@ const stackSchema = new Schema({
     title: String,
     summary: String,
     url: String,
+    comment: String,
     isSaved: Boolean
 })
 

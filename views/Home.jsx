@@ -18,7 +18,7 @@ const Home = props =>
     <a id = "gotoHome"className="navbar-brand" href="/">Home</a>
     <a id = "gotoSaved" className="navbar-brand" href="#">SaveTitle</a>
       <a href="#"><button id = "scrapeData" className="btn btn-danger btn-lg"><span className="fa fa-plus"></span>Scrap New Title</button></a>
-      <a href="#"><button className="btn btn-danger btn-lg"><span className="fa fa-times"></span>Clear Aticle</button></a>
+      <a href="#"><button id = "deleteallBTN" className="btn btn-danger btn-lg"><span className="fa fa-times"></span>Clear Aticle</button></a>
 </nav>
 <div className="jumbotron text-center">
   <div className="overlay">
@@ -30,37 +30,28 @@ const Home = props =>
     <p>New York Times Edition</p>
   </div>
 </div>
-<div className="container-fluid article-container">
+<div className="container-fluid article-container card">
  
   <div className='alert alert-warning text-center'>
-    <h4>Uh Oh. Looks like we don't have any new articles.</h4>
     {
       props.stacks.map(stack => <div>
         <a id = 'link' data-url={`https://www.nytimes.com${stack.url}`} href ='#'>{stack.title}</a>
         <p> {stack.summary} </p>
+        <div className="form-group">
+        <label>Note:</label>
+        <textarea className="form-control" id="note" data-id ={stack._id} rows="2"></textarea>
+        </div>
         <button id = 'saveBTN' data-id ={stack._id}>Save</button>
+        <hr/>
         {/* <button id = "deleteBTN" data-id ={stack._id}>Delete</button> */}
         </div>)
     }
-  </div>
-  <div className="card">
-    <div className="card-header text-center">
-      <h3>What Would You Like To Do?</h3>
-    </div>
-    <div className="card-body text-center">
-      <h4>
-        <a className="scrape-new">Try Scraping New Articles</a>
-      </h4>
-      <h4>
-        <a href="/saved">Go to Saved Articles</a>
-      </h4>
-    </div>
   </div>
 </div>
 
 <footer className="footer">
   <div className="container">
-    <p>New York Times Mongo Scraper</p>
+    <p>New York Times Mongo Scraper</p> 
   </div>
 </footer>   
     <div className="row"/>
