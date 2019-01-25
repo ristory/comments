@@ -3,7 +3,6 @@ var mongoose = require("mongoose");
 var path = require("path");
 var axios = require("axios");
 var cheerio = require("cheerio");
-var PORT = 3000;
 
 // Initialize Express
 var app = express();
@@ -23,6 +22,6 @@ mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
 app.set(require('./routes')(app))
 //app.set(require('./stacks')(app))
 
-app.listen(PORT, function() {
-    console.log("App running on port " + PORT + "!");
-  });
+app.listen(process.env.PORT || 3000, function(){
+  console.log("App running on port " + 3000 + "!");
+});
