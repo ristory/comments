@@ -1,4 +1,3 @@
-var React = require("React")
 var express = require("express");
 var mongoose = require("mongoose");
 var path = require("path");
