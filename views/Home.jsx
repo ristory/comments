@@ -1,6 +1,5 @@
-const React = require("React")
-const Home = props =>
-
+const React = require("react")
+const Home = props => (
 <html lang='en'>
 <head>
   <meta charSet="UTF-8"/>
@@ -60,5 +59,5 @@ const Home = props =>
 </body>
 
 </html>
-
+)
 module.exports = Home
